@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Salon.Data;
 
 namespace Salon.Data.Migrations
 {
     [DbContext(typeof(SalonContext))]
-    partial class SalonContextModelSnapshot : ModelSnapshot
+    [Migration("20190619213617_RemovedPersonInheritance")]
+    partial class RemovedPersonInheritance
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -75,46 +77,6 @@ namespace Salon.Data.Migrations
                     b.HasIndex("AppointmentId");
 
                     b.ToTable("AppointmentTransactions");
-                });
-
-            modelBuilder.Entity("Salon.Data.Entities.ContactAcceptance", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("AcceptedOn");
-
-                    b.Property<int>("CustomerId");
-
-                    b.Property<DateTime>("DeletedOn");
-
-                    b.Property<bool>("IsDeleted");
-
-                    b.Property<bool>("IsOkToCotact");
-
-                    b.Property<int>("TypeId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CustomerId");
-
-                    b.HasIndex("TypeId");
-
-                    b.ToTable("ContactAcceptance");
-                });
-
-            modelBuilder.Entity("Salon.Data.Entities.ContactType", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Type");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("ContactType");
                 });
 
             modelBuilder.Entity("Salon.Data.Entities.Customer", b =>
@@ -433,19 +395,6 @@ namespace Salon.Data.Migrations
                     b.HasOne("Salon.Data.Entities.Appointment", "Appointment")
                         .WithMany("AppointmentTransactions")
                         .HasForeignKey("AppointmentId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("Salon.Data.Entities.ContactAcceptance", b =>
-                {
-                    b.HasOne("Salon.Data.Entities.Customer", "Customer")
-                        .WithMany("ContactAcceptances")
-                        .HasForeignKey("CustomerId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("Salon.Data.Entities.ContactType", "ContactType")
-                        .WithMany()
-                        .HasForeignKey("TypeId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

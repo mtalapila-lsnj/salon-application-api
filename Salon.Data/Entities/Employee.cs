@@ -5,12 +5,29 @@ using System.Text;
 
 namespace Salon.Data.Entities
 {
-    public class Employee: Person
+    public class Employee
     {
+        public int Id { get; set; }
+        public DateTime? DateOfBirth { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string LastInitial { get; set; }
+        public int? GenderId { get; set; }
+        [ForeignKey("GenderId")]
+        public virtual Gender Gender { get; set; }
         public DateTime? HireDate { get; set; }
         public bool IsActive { get; set; }
+        public string PhoneNumber { get; set; }
+        public string AlternatePhoneNumber { get; set; }
+        public string Address { get; set; }
+        public string ImageSource { get; set; }
+        public string Remarks { get; set; }
         public int? TitleId { get; set; }
         [ForeignKey("TitleId")]
-        public virtual  EmployeeTitle CurrentTitle { get; set; }
+        public virtual EmployeeTitle CurrentTitle { get; set; }
+
+        public virtual ICollection<Qualification> EmployeeQualifications { get; set; }
+        public virtual ICollection<Appointment> EmployeeAppointments { get; set; }
+        public virtual ICollection<EmployeeSchedule> EmployeeSchedules { get; set; }
     }
 }

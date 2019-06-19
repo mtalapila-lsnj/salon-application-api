@@ -4,10 +4,10 @@ using System.Text;
 
 namespace Salon.Data.Entities
 {
-    public class Gender
+    public class SalonSchedule
     {
         public int Id { get; set; }
-        public string Description { get; set; }
-        public virtual ICollection<Person> People { get; set; }
+        public DateTime Start { get; set; }
+        public int Duration { get; set; }
     }
 }

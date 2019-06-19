@@ -1,4 +1,5 @@
-﻿using Salon.Data.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using Salon.Data.Entities;
 using Salon.Data.Repositories.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -16,7 +17,7 @@ namespace Salon.Data.Repositories
         }
         public IEnumerable<Employee> GetEmployees()
         {
-            return this._context.Set<Employee>().ToList();
+            return this._context.Set<Employee>().Include(x => x.Gender).ToList();
         }
     }
 }

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Salon.Data;
 
 namespace Salon.Data.Migrations
 {
     [DbContext(typeof(SalonContext))]
-    partial class SalonContextModelSnapshot : ModelSnapshot
+    [Migration("20190619035324_AddedAppointmentEtcc")]
+    partial class AddedAppointmentEtcc
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -75,118 +77,6 @@ namespace Salon.Data.Migrations
                     b.HasIndex("AppointmentId");
 
                     b.ToTable("AppointmentTransactions");
-                });
-
-            modelBuilder.Entity("Salon.Data.Entities.ContactAcceptance", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("AcceptedOn");
-
-                    b.Property<int>("CustomerId");
-
-                    b.Property<DateTime>("DeletedOn");
-
-                    b.Property<bool>("IsDeleted");
-
-                    b.Property<bool>("IsOkToCotact");
-
-                    b.Property<int>("TypeId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CustomerId");
-
-                    b.HasIndex("TypeId");
-
-                    b.ToTable("ContactAcceptance");
-                });
-
-            modelBuilder.Entity("Salon.Data.Entities.ContactType", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Type");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("ContactType");
-                });
-
-            modelBuilder.Entity("Salon.Data.Entities.Customer", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime?>("DateOfBirth");
-
-                    b.Property<string>("FirstName");
-
-                    b.Property<int?>("GenderId");
-
-                    b.Property<string>("LastName");
-
-                    b.Property<string>("Notes");
-
-                    b.Property<string>("PrimaryEmail");
-
-                    b.Property<string>("PrimaryPhoneNumber");
-
-                    b.Property<string>("SecondaryEmail");
-
-                    b.Property<string>("SecondaryPhoneNumber");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("GenderId");
-
-                    b.ToTable("Customers");
-                });
-
-            modelBuilder.Entity("Salon.Data.Entities.Employee", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Address");
-
-                    b.Property<string>("AlternatePhoneNumber");
-
-                    b.Property<DateTime?>("DateOfBirth");
-
-                    b.Property<string>("FirstName");
-
-                    b.Property<int?>("GenderId");
-
-                    b.Property<DateTime?>("HireDate");
-
-                    b.Property<string>("ImageSource");
-
-                    b.Property<bool>("IsActive");
-
-                    b.Property<string>("LastInitial");
-
-                    b.Property<string>("LastName");
-
-                    b.Property<string>("PhoneNumber");
-
-                    b.Property<string>("Remarks");
-
-                    b.Property<int?>("TitleId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("GenderId");
-
-                    b.HasIndex("TitleId");
-
-                    b.ToTable("Employees");
                 });
 
             modelBuilder.Entity("Salon.Data.Entities.EmployeeSchedule", b =>
@@ -315,6 +205,9 @@ namespace Salon.Data.Migrations
 
                     b.Property<DateTime?>("DateOfBirth");
 
+                    b.Property<string>("Discriminator")
+                        .IsRequired();
+
                     b.Property<string>("FirstName");
 
                     b.Property<int?>("GenderId");
@@ -326,6 +219,8 @@ namespace Salon.Data.Migrations
                     b.HasIndex("GenderId");
 
                     b.ToTable("Person");
+
+                    b.HasDiscriminator<string>("Discriminator").HasValue("Person");
                 });
 
             modelBuilder.Entity("Salon.Data.Entities.Qualification", b =>
@@ -413,6 +308,50 @@ namespace Salon.Data.Migrations
                     b.ToTable("TimeSlots");
                 });
 
+            modelBuilder.Entity("Salon.Data.Entities.Customer", b =>
+                {
+                    b.HasBaseType("Salon.Data.Entities.Person");
+
+                    b.Property<string>("Notes");
+
+                    b.Property<string>("PrimaryEmail");
+
+                    b.Property<string>("PrimaryPhoneNumber");
+
+                    b.Property<string>("SecondaryEmail");
+
+                    b.Property<string>("SecondaryPhoneNumber");
+
+                    b.HasDiscriminator().HasValue("Customer");
+                });
+
+            modelBuilder.Entity("Salon.Data.Entities.Employee", b =>
+                {
+                    b.HasBaseType("Salon.Data.Entities.Person");
+
+                    b.Property<string>("Address");
+
+                    b.Property<string>("AlternatePhoneNumber");
+
+                    b.Property<DateTime?>("HireDate");
+
+                    b.Property<string>("ImageSource");
+
+                    b.Property<bool>("IsActive");
+
+                    b.Property<string>("LastInitial");
+
+                    b.Property<string>("PhoneNumber");
+
+                    b.Property<string>("Remarks");
+
+                    b.Property<int?>("TitleId");
+
+                    b.HasIndex("TitleId");
+
+                    b.HasDiscriminator().HasValue("Employee");
+                });
+
             modelBuilder.Entity("Salon.Data.Entities.Appointment", b =>
                 {
                     b.HasOne("Salon.Data.Entities.Customer", "Customer")
@@ -434,37 +373,6 @@ namespace Salon.Data.Migrations
                         .WithMany("AppointmentTransactions")
                         .HasForeignKey("AppointmentId")
                         .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("Salon.Data.Entities.ContactAcceptance", b =>
-                {
-                    b.HasOne("Salon.Data.Entities.Customer", "Customer")
-                        .WithMany("ContactAcceptances")
-                        .HasForeignKey("CustomerId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("Salon.Data.Entities.ContactType", "ContactType")
-                        .WithMany()
-                        .HasForeignKey("TypeId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("Salon.Data.Entities.Customer", b =>
-                {
-                    b.HasOne("Salon.Data.Entities.Gender", "Gender")
-                        .WithMany()
-                        .HasForeignKey("GenderId");
-                });
-
-            modelBuilder.Entity("Salon.Data.Entities.Employee", b =>
-                {
-                    b.HasOne("Salon.Data.Entities.Gender", "Gender")
-                        .WithMany()
-                        .HasForeignKey("GenderId");
-
-                    b.HasOne("Salon.Data.Entities.EmployeeTitle", "CurrentTitle")
-                        .WithMany("Employees")
-                        .HasForeignKey("TitleId");
                 });
 
             modelBuilder.Entity("Salon.Data.Entities.EmployeeSchedule", b =>
@@ -527,6 +435,13 @@ namespace Salon.Data.Migrations
                     b.HasOne("Salon.Data.Entities.ServiceType", "ServiceType")
                         .WithMany("Services")
                         .HasForeignKey("TypeId");
+                });
+
+            modelBuilder.Entity("Salon.Data.Entities.Employee", b =>
+                {
+                    b.HasOne("Salon.Data.Entities.EmployeeTitle", "CurrentTitle")
+                        .WithMany("Employees")
+                        .HasForeignKey("TitleId");
                 });
 #pragma warning restore 612, 618
         }

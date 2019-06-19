@@ -4,10 +4,10 @@ using System.Text;
 
 namespace Salon.Data.Entities
 {
-    public class Gender
+    public class ServiceType
     {
         public int Id { get; set; }
-        public string Description { get; set; }
-        public virtual ICollection<Person> People { get; set; }
+        public string Name { get; set; }
+        public virtual ICollection<Service> Services { get; set; }
     }
 }
