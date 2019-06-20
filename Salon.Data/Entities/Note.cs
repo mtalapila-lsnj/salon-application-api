@@ -1,11 +1,12 @@
-﻿using System;
+﻿using Salon.Data.Base;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace Salon.Data.Entities
 {
-    public class Note
+    public class Note: AbstractDataEntity
     {
         public int Id { get; set; }
         public string NoteDescription { get; set; }

@@ -1,11 +1,12 @@
-﻿using System;
+﻿using Salon.Data.Base;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace Salon.Data.Entities
 {
-    public class Person
+    public class Person: AbstractDataEntity
     {
         public int Id { get; set; }
         public DateTime? DateOfBirth { get; set; }

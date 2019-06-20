@@ -1,11 +1,12 @@
-﻿using System;
+﻿using Salon.Data.Base;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace Salon.Data.Entities
 {
-    public class Appointment
+    public class Appointment: AbstractDataEntity
     {
         public int Id { get; set; }
         public int? CustomerId { get; set; }
@@ -27,5 +28,6 @@ namespace Salon.Data.Entities
         public virtual Service Service { get; set; }
 
         public virtual ICollection<AppointmentTransaction> AppointmentTransactions { get; set; }
+        public virtual ICollection<AppointmentProduct> AppointmentUsedProducts { get; set; }
     }
 }

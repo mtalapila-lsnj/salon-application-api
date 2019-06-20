@@ -1,11 +1,12 @@
-﻿using System;
+﻿using Salon.Data.Base;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace Salon.Data.Entities
 {
-    public class Customer
+    public class Customer: AbstractDataEntity
     {
         public int Id { get; set; }
         public DateTime? DateOfBirth { get; set; }
@@ -23,5 +24,7 @@ namespace Salon.Data.Entities
         public virtual ICollection<Appointment> Appointments { get; set; }
         public virtual ICollection<GiftCard> GiftCards { get; set; }
         public virtual ICollection<ContactAcceptance> ContactAcceptances { get; set; }
+        public virtual ICollection<CustomerServicePreference> ServicePreferences { get; set; }
+        public virtual ICollection<CustomerProductPreference> ProductPreferences { get; set; }
     }
 }
