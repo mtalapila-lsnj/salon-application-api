@@ -26,5 +26,6 @@ namespace Salon.Data.Entities
         public virtual ICollection<ContactAcceptance> ContactAcceptances { get; set; }
         public virtual ICollection<CustomerServicePreference> ServicePreferences { get; set; }
         public virtual ICollection<CustomerProductPreference> ProductPreferences { get; set; }
+        public virtual ICollection<CustomerContactPreference> ContactPreferences { get; set; }
     }
 }

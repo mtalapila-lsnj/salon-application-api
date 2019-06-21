@@ -9,5 +9,8 @@ namespace Salon.Data.Entities
     {
         public int Id { get; set; }
         public string Type { get; set; }
+
+        public virtual ICollection<CustomerContactPreference> ContactPreferences { get; set; }      
+        public virtual ICollection<ContactAcceptance> ContactAcceptances { get; set; }
     }
 }
