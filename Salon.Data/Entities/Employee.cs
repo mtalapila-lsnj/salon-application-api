@@ -30,5 +30,6 @@ namespace Salon.Data.Entities
         public virtual ICollection<Qualification> EmployeeQualifications { get; set; }
         public virtual ICollection<Appointment> EmployeeAppointments { get; set; }
         public virtual ICollection<EmployeeSchedule> EmployeeSchedules { get; set; }
+        public virtual ICollection<Note> Notes { get; set; }
     }
 }

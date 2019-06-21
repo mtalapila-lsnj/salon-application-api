@@ -34,6 +34,7 @@ namespace Salon.API
             services.AddDbContext<SalonContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("SalonContext"), sqlServerOptionsAction => sqlServerOptionsAction.EnableRetryOnFailure()));
             services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+            services.AddScoped<IGiftCardRepository, GiftCardRepository>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddAutoMapper();
         }

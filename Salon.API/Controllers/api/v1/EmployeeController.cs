@@ -13,14 +13,24 @@ namespace Salon.API.Controllers.api.v1
     public class EmployeeController : ControllerBase
     {
         private readonly IEmployeeRepository _employeeRepository;
-        public EmployeeController(IEmployeeRepository employeeRepository)
+        private readonly IGiftCardRepository _giftCardRepository;
+        public EmployeeController(IEmployeeRepository employeeRepository, IGiftCardRepository giftCardRepository)
         {
             _employeeRepository = employeeRepository;
+            _giftCardRepository = giftCardRepository;
         }
+        [Route("")]
         public IActionResult Get()
         {
             var employees = _employeeRepository.GetEmployees();
             return Ok(employees);
+        }
+        [Route("giftcards")]
+        [HttpGet]
+        public IActionResult GetGiftCards()
+        {
+            var giftCards = _giftCardRepository.GetAllGiftCards();
+            return Ok(giftCards);
         }
     }
 }
