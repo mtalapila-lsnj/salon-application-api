@@ -30,7 +30,8 @@ namespace Salon.Data.Repositories
         {
             var entity = MapTo(viewModel);
             _context.Entry(entity).State = EntityState.Added;
-            _context.SaveChanges();
+            var x = _context.SaveChanges();
+            
             return MapFrom(entity);
         }
     }

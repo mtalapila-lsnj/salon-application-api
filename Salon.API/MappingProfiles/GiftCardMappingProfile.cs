@@ -23,6 +23,8 @@ namespace Salon.API.MappingProfiles
                 .ForMember(x => x.To, opt => opt.MapFrom(src => src.To))
                 .ForMember(x => x.From, opt => opt.MapFrom(src => src.From))
                 .ForMember(x => x.Note, opt => opt.MapFrom(src => src.Note));
+            CreateMap<GiftCardViewModel, GiftCard>()
+                .ForMember(x => x.DateExpired, opt => opt.MapFrom(src => src.DateExpire));
         }
     }
 }
