@@ -19,5 +19,19 @@ namespace Salon.Data.Repositories
         {
             return _context.Set<GiftCard>().Include(x => x.Customer).Include(x => x.GiftCardTransactions).Select(x => MapFrom(x));
         }
+
+        public GiftCardViewModel GetGiftCardById(int id)
+        {
+            var entity = _context.Set<GiftCard>().Include(x => x.Customer).Include(x => x.GiftCardTransactions).Where(x => x.Id == id).FirstOrDefault();
+            return MapFrom(entity);            
+        }
+
+        public GiftCardViewModel AddGiftCard(GiftCardViewModel viewModel)
+        {
+            var entity = MapTo(viewModel);
+            _context.Entry(entity).State = EntityState.Added;
+            _context.SaveChanges();
+            return MapFrom(entity);
+        }
     }
 }

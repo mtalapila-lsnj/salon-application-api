@@ -16,6 +16,8 @@ using Salon.API.MappingProfiles;
 using Salon.Data;
 using Salon.Data.Repositories;
 using Salon.Data.Repositories.Interfaces;
+using Salon.Service;
+using Salon.Service.Interfaces;
 
 namespace Salon.API
 {
@@ -35,6 +37,8 @@ namespace Salon.API
                 options.UseSqlServer(Configuration.GetConnectionString("SalonContext"), sqlServerOptionsAction => sqlServerOptionsAction.EnableRetryOnFailure()));
             services.AddScoped<IEmployeeRepository, EmployeeRepository>();
             services.AddScoped<IGiftCardRepository, GiftCardRepository>();
+
+            services.AddScoped<IGiftCardService, GiftCardService>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddAutoMapper();
         }
