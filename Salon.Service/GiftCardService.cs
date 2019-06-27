@@ -29,5 +29,9 @@ namespace Salon.Service
         {
             return _giftCardRepository.AddGiftCard(model);
         }
+        public GiftCardViewModel UpdateGiftCard(int id, GiftCardViewModel model)
+        {
+            return _giftCardRepository.UpdateGiftCard(id, model);
+        }
     }
 }

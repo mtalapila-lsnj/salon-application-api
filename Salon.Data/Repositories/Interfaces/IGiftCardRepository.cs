@@ -10,5 +10,8 @@ namespace Salon.Data.Repositories.Interfaces
         IEnumerable<GiftCardViewModel> GetAllGiftCards();
         GiftCardViewModel GetGiftCardById(int id);
         GiftCardViewModel AddGiftCard(GiftCardViewModel viewModel);
+
+        GiftCardViewModel UpdateGiftCard(int id, GiftCardViewModel giftCard);
+
     }
 }

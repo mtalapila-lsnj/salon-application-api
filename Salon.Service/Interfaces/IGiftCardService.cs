@@ -10,5 +10,6 @@ namespace Salon.Service.Interfaces
         IEnumerable<GiftCardViewModel> GetGiftCards();
         GiftCardViewModel GetGiftCard(int id);
         GiftCardViewModel AddGiftCard(GiftCardViewModel giftCard);
+        GiftCardViewModel UpdateGiftCard(int id, GiftCardViewModel giftCard);
     }
 }

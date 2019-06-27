@@ -43,5 +43,18 @@ namespace Salon.API.Controllers.api.v1
                 return BadRequest(ex);
             }            
         }
+        [HttpPut]
+        [Route("update/{id}")]
+        public ActionResult<GiftCardViewModel> Put(int id, GiftCardViewModel giftCard)
+        {
+            try
+            {
+                return _giftCardService.UpdateGiftCard(id, giftCard);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex);
+            }
+        }
     }
 }

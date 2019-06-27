@@ -34,5 +34,16 @@ namespace Salon.Data.Repositories
             
             return MapFrom(entity);
         }
+
+        public GiftCardViewModel UpdateGiftCard(int id, GiftCardViewModel giftCard)
+        {
+            if (id != giftCard.Id)
+            {
+                return null;
+            }
+            _context.Entry(MapTo(giftCard)).State = EntityState.Modified;
+            _context.SaveChanges();
+            return giftCard;
+        }
     }
 }
