@@ -11,5 +11,6 @@ namespace Salon.Service.Interfaces
         GiftCardViewModel GetGiftCard(int id);
         GiftCardViewModel AddGiftCard(GiftCardViewModel giftCard);
         GiftCardViewModel UpdateGiftCard(int id, GiftCardViewModel giftCard);
+        void DeleteGiftCard(GiftCardViewModel giftCard);
     }
 }

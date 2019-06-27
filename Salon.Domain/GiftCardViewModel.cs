@@ -15,6 +15,7 @@ namespace Salon.Domain
         public string To { get; set; }
         public string From { get; set; }
         public string Note { get; set; }
+        public bool IsDeleted { get; set; }
         public ICollection<GiftCardTransactionViewModel> GiftCardTransactions { get; set; }
     }
 }

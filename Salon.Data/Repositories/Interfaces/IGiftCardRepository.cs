@@ -12,6 +12,5 @@ namespace Salon.Data.Repositories.Interfaces
         GiftCardViewModel AddGiftCard(GiftCardViewModel viewModel);
 
         GiftCardViewModel UpdateGiftCard(int id, GiftCardViewModel giftCard);
-
     }
 }

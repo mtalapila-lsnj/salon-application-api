@@ -56,5 +56,18 @@ namespace Salon.API.Controllers.api.v1
                 return BadRequest(ex);
             }
         }
+        [HttpDelete]
+        public ActionResult Delete(GiftCardViewModel giftCard)
+        {
+            try
+            {
+                _giftCardService.DeleteGiftCard(giftCard);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex);
+            }
+        }
     }
 }

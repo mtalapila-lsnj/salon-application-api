@@ -17,12 +17,12 @@ namespace Salon.Data.Repositories
 
         public IEnumerable<GiftCardViewModel> GetAllGiftCards()
         {
-            return _context.Set<GiftCard>().Include(x => x.Customer).Include(x => x.GiftCardTransactions).Select(x => MapFrom(x));
+            return _context.Set<GiftCard>().Where(x => x.IsDeleted == false).Include(x => x.Customer).Include(x => x.GiftCardTransactions).Select(x => MapFrom(x));
         }
 
         public GiftCardViewModel GetGiftCardById(int id)
         {
-            var entity = _context.Set<GiftCard>().Include(x => x.Customer).Include(x => x.GiftCardTransactions).Where(x => x.Id == id).FirstOrDefault();
+            var entity = _context.Set<GiftCard>().Include(x => x.Customer).Include(x => x.GiftCardTransactions).Where(x => x.Id == id && x.IsDeleted == false).FirstOrDefault();
             return MapFrom(entity);            
         }
 

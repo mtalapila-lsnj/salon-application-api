@@ -16,6 +16,7 @@ namespace Salon.Data.Entities
         public string To { get; set; }
         public string From { get; set; }
         public string Note { get; set; }
+        public bool IsDeleted { get; set; }
 
         [ForeignKey("CustomerId")]
         public virtual Customer Customer { get; set; }

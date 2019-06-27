@@ -33,5 +33,10 @@ namespace Salon.Service
         {
             return _giftCardRepository.UpdateGiftCard(id, model);
         }
+        public void DeleteGiftCard(GiftCardViewModel giftCard)
+        {
+            giftCard.IsDeleted = true;
+            _giftCardRepository.UpdateGiftCard(giftCard.Id, giftCard);
+        }
     }
 }
