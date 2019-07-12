@@ -30,6 +30,9 @@ namespace Salon.Data
         public virtual DbSet<Visit> Visits { get; set; }
         public virtual DbSet<AppointmentDetail> AppointmentDetails { get; set; }
         public virtual DbSet<ServiceStep> ServiceSteps { get; set; }
+        public virtual DbSet<ContactType> ContactTypes { get; set; }
+        public virtual DbSet<CustomerContactPreference> CustomerContactPreferences { get; set; }
+        public virtual DbSet<ContactAcceptance> ContactAcceptances { get; set; }       
 
     }
 }
