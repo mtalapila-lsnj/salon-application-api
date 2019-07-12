@@ -26,5 +26,10 @@ namespace Salon.Data
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<AppointmentProduct> AppointmentProducts { get; set; }
         public virtual DbSet<CustomerProductPreference> CustomerProductPreferences { get; set; }
+        public virtual DbSet<GroupParty> GroupParties { get; set; }
+        public virtual DbSet<Visit> Visits { get; set; }
+        public virtual DbSet<AppointmentDetail> AppointmentDetails { get; set; }
+        public virtual DbSet<ServiceStep> ServiceSteps { get; set; }
+
     }
 }

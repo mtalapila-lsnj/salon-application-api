@@ -36,5 +36,6 @@ namespace Salon.Data.Entities
         public virtual GroupParty GroupParty { get; set; }
         public virtual ICollection<AppointmentTransaction> AppointmentTransactions { get; set; }
         public virtual ICollection<AppointmentProduct> AppointmentUsedProducts { get; set; }
+        public virtual ICollection<AppointmentDetail> AppointmentDetails { get; set; }
     }
 }

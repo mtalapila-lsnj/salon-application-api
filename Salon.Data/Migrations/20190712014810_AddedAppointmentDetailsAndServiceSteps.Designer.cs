@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Salon.Data;
 
 namespace Salon.Data.Migrations
 {
     [DbContext(typeof(SalonContext))]
-    partial class SalonContextModelSnapshot : ModelSnapshot
+    [Migration("20190712014810_AddedAppointmentDetailsAndServiceSteps")]
+    partial class AddedAppointmentDetailsAndServiceSteps
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -64,33 +66,6 @@ namespace Salon.Data.Migrations
                     b.HasIndex("VisitId");
 
                     b.ToTable("Appointments");
-                });
-
-            modelBuilder.Entity("Salon.Data.Entities.AppointmentDetail", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int?>("AppointmentId");
-
-                    b.Property<int?>("Duration");
-
-                    b.Property<int?>("EmployeeId");
-
-                    b.Property<int?>("ServiceStepId");
-
-                    b.Property<DateTime>("Start");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AppointmentId");
-
-                    b.HasIndex("EmployeeId");
-
-                    b.HasIndex("ServiceStepId");
-
-                    b.ToTable("AppointmentDetails");
                 });
 
             modelBuilder.Entity("Salon.Data.Entities.AppointmentProduct", b =>
@@ -425,7 +400,7 @@ namespace Salon.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("GroupParties");
+                    b.ToTable("GroupParty");
                 });
 
             modelBuilder.Entity("Salon.Data.Entities.Note", b =>
@@ -564,7 +539,7 @@ namespace Salon.Data.Migrations
 
                     b.HasIndex("ServiceId");
 
-                    b.ToTable("ServiceSteps");
+                    b.ToTable("ServiceStep");
                 });
 
             modelBuilder.Entity("Salon.Data.Entities.ServiceType", b =>
@@ -607,7 +582,7 @@ namespace Salon.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Visits");
+                    b.ToTable("Visit");
                 });
 
             modelBuilder.Entity("Salon.Data.Entities.Appointment", b =>
@@ -631,21 +606,6 @@ namespace Salon.Data.Migrations
                     b.HasOne("Salon.Data.Entities.Visit", "Visit")
                         .WithMany()
                         .HasForeignKey("VisitId");
-                });
-
-            modelBuilder.Entity("Salon.Data.Entities.AppointmentDetail", b =>
-                {
-                    b.HasOne("Salon.Data.Entities.Appointment", "Appointment")
-                        .WithMany()
-                        .HasForeignKey("AppointmentId");
-
-                    b.HasOne("Salon.Data.Entities.Employee", "Employee")
-                        .WithMany()
-                        .HasForeignKey("EmployeeId");
-
-                    b.HasOne("Salon.Data.Entities.ServiceStep", "ServiceStep")
-                        .WithMany()
-                        .HasForeignKey("ServiceStepId");
                 });
 
             modelBuilder.Entity("Salon.Data.Entities.AppointmentProduct", b =>

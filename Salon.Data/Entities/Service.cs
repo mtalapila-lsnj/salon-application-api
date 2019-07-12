@@ -18,5 +18,6 @@ namespace Salon.Data.Entities
         public virtual ServiceType ServiceType { get; set; }
         public virtual ICollection<Appointment> Appointments { get; set; }
         public virtual ICollection<Qualification> Qualifications { get; set; }
+        public virtual ICollection<ServiceStep> ServiceSteps { get; set; }
     }
 }
