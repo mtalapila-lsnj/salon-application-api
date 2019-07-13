@@ -9,7 +9,7 @@ namespace Salon.Data.Entities
     public class Appointment: AbstractDataEntity
     {
         public int Id { get; set; }
-        public int Name { get; set; } // your nail appointment etc.
+        public string Name { get; set; } // your nail appointment etc.
         public int? CustomerId { get; set; }
         public int? EmployeeId { get; set; }
         public int? ServiceId { get; set; }
@@ -17,8 +17,8 @@ namespace Salon.Data.Entities
         public int Duration { get; set; }
         public bool IsPaid { get; set; }
         public string Confirmation { get; set; }
-        public bool IsPrimaryRequest { get; set; }
-        public bool IsSecondaryRequest { get; set; }
+        public bool? IsPrimaryRequest { get; set; }
+        public bool? IsSecondaryRequest { get; set; }
         public string Remarks { get; set; }
         public int? VisitId { get; set; }
         public int? GroupPartyId { get; set; }

@@ -10,7 +10,7 @@ namespace Salon.Data.Entities
     {
         public int Id { get; set; }
         public int? AppointmentId { get; set; }
-        public DateTime Start { get; set; }
+        public DateTime? Start { get; set; }
         public int? Duration { get; set; }
         
         public int? ServiceStepId { get; set; }

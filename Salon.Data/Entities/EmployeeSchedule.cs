@@ -9,8 +9,8 @@ namespace Salon.Data.Entities
     public class EmployeeSchedule: AbstractDataEntity
     {
         public int Id { get; set; }
-        public int EmployeeId { get; set; }
-        public int TimeSlotId { get; set; }
+        public int? EmployeeId { get; set; }
+        public int? TimeSlotId { get; set; }
 
         [ForeignKey("EmployeeId")]
         public virtual Employee Employee { get; set; }

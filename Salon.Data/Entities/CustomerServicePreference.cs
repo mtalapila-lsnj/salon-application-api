@@ -9,8 +9,8 @@ namespace Salon.Data.Entities
     public class CustomerServicePreference: AbstractDataEntity
     {
         public int Id { get; set; }
-        public int CustomerId { get; set; }
-        public int QualificationId { get; set; }
+        public int? CustomerId { get; set; }
+        public int? QualificationId { get; set; }
         [ForeignKey("CustomerId")]
         public virtual Customer Customer { get; set; }
         [ForeignKey("QualificationId")]
