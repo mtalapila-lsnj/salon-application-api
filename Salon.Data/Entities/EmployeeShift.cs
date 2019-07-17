@@ -6,15 +6,16 @@ using System.Text;
 
 namespace Salon.Data.Entities
 {
-    public class EmployeeSchedule : AbstractDataEntity
+    public class EmployeeShift: AbstractDataEntity
     {
         public int Id { get; set; }
         public int? EmployeeId { get; set; }
-        public int? TimeSlotId { get; set; }
-
+        public DateTime? Start { get; set; }
+        public int? Duration { get; set; }
+        public DateTime? CreatedDate { get; set; }
+        public DateTime? ModifiedDate { get; set; }
+        public bool? Deleted { get; set; }
         [ForeignKey("EmployeeId")]
         public virtual Employee Employee { get; set; }
-        [ForeignKey("TimeSlotId")]
-        public virtual TimeSlot TimeSlot { get; set; }
     }
 }
