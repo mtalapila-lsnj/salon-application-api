@@ -10,8 +10,9 @@ namespace Salon.Data.Entities
     {
         public int Id { get; set; }
         public int? EmployeeId { get; set; }
-        public int? DayOfWeek { get; set; }
-        public int? DayOfMonth { get; set; }
+        // used for day of week number of day of month number 
+        public int? Number { get; set; }
+        public EmployeeStandardShiftType? EmployeeStandardShiftType { get; set; }
         public int? StartHour { get; set; }
         public int? StartMinute { get; set; }
         public int? EndHour { get; set; }
@@ -20,5 +21,10 @@ namespace Salon.Data.Entities
         public DateTime? ModifiedOn { get; set; }
         [ForeignKey("EmployeeId")]
         public virtual Employee Employee { get; set; }
+    }
+    public enum EmployeeStandardShiftType
+    {
+        DayOfWeek = 0,
+        DayOfMonth
     }
 }

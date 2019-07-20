@@ -5,9 +5,10 @@ using System.Text;
 
 namespace Salon.Data.Entities
 {
-    public class CustomerStandardServiceAppointmentType: AbstractDataEntity
+    public enum CustomerStandardServiceAppointmentType
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
+        Daily = 0,
+        Weekly,
+        Monthly
     }
 }
