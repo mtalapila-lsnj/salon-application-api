@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Salon.Data.Base", "Salon.Da
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Salon.Domain", "Salon.Domain\Salon.Domain.csproj", "{A16D3B85-3306-4F08-9653-C088DBB53045}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Salon.Service", "Salon.Service\Salon.Service.csproj", "{1572FD4E-F91D-4C97-BACC-BBBF17C1EC7B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Salon.Service", "Salon.Service\Salon.Service.csproj", "{1572FD4E-F91D-4C97-BACC-BBBF17C1EC7B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Salon.Console.CsvParser", "Salon.Console.CsvParser\Salon.Console.CsvParser.csproj", "{B02D6256-75E9-4A62-847F-397CA06A7EBA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{1572FD4E-F91D-4C97-BACC-BBBF17C1EC7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1572FD4E-F91D-4C97-BACC-BBBF17C1EC7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1572FD4E-F91D-4C97-BACC-BBBF17C1EC7B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B02D6256-75E9-4A62-847F-397CA06A7EBA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B02D6256-75E9-4A62-847F-397CA06A7EBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B02D6256-75E9-4A62-847F-397CA06A7EBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B02D6256-75E9-4A62-847F-397CA06A7EBA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
