@@ -24,5 +24,13 @@ namespace Salon.API.Controllers.api.v1
             var customers = _customerService.GetAllCustomers();
             return Ok(customers);
         }
+        [HttpGet("{id}")]
+        public ActionResult<CustomerViewModel> GetById(int id)
+        {
+            var customer = _customerService.GetCustomerById(id);
+            if (customer != null)
+                return Ok(customer);
+            return BadRequest();
+        }
     }
 }

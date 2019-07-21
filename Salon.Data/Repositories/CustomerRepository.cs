@@ -21,5 +21,14 @@ namespace Salon.Data.Repositories
                         .Include(x => x.Appointments)
                         .Select(x => MapFrom(x));
         }
+        public CustomerViewModel GetCustomerById(int id)
+        {
+            var customerEntity = _context.Set<Customer>().Where(x => x.Id == id).FirstOrDefault();
+            if (customerEntity != null)
+            {
+                return MapFrom(customerEntity);
+            }
+            return null;
+        }
     }
 }

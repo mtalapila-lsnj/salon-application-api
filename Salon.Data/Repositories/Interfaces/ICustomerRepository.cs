@@ -8,5 +8,6 @@ namespace Salon.Data.Repositories.Interfaces
     public interface ICustomerRepository
     {
         IEnumerable<CustomerViewModel> GetCustomers();
+        CustomerViewModel GetCustomerById(int id);
     }
 }

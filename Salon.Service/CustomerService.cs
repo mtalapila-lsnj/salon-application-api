@@ -18,5 +18,12 @@ namespace Salon.Service
         {
             return _customerRepository.GetCustomers();
         }
+        public CustomerViewModel GetCustomerById(int id)
+        {
+            var customer = _customerRepository.GetCustomerById(id);
+            if (customer != null)
+                return customer;
+            return null;
+        }
     }
 }

@@ -8,5 +8,6 @@ namespace Salon.Service.Interfaces
     public interface ICustomerService
     {
         IEnumerable<CustomerViewModel> GetAllCustomers();
+        CustomerViewModel GetCustomerById(int id);
     }
 }
