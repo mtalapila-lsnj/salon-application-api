@@ -15,6 +15,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Salon.Service", "Salon.Serv
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Salon.Console.CsvParser", "Salon.Console.CsvParser\Salon.Console.CsvParser.csproj", "{B02D6256-75E9-4A62-847F-397CA06A7EBA}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UtilityProjects", "UtilityProjects", "{C0AE950C-5E03-4AAC-9083-95F0E8346F45}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -48,6 +50,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B02D6256-75E9-4A62-847F-397CA06A7EBA} = {C0AE950C-5E03-4AAC-9083-95F0E8346F45}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {67EA132D-7C1E-4636-A755-2B74DDF4C30A}
