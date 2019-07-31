@@ -30,5 +30,13 @@ namespace Salon.Data.Repositories
             }
             return null;
         }
+        public CustomerViewModel AddNewCustomer(CustomerViewModel customerViewModel)
+        {
+            var entity = MapTo(customerViewModel);
+            _context.Entry(entity).State = EntityState.Added;
+            _context.SaveChanges();
+
+            return MapFrom(entity);
+        }
     }
 }

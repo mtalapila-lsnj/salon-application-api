@@ -9,5 +9,6 @@ namespace Salon.Service.Interfaces
     {
         IEnumerable<CustomerViewModel> GetAllCustomers();
         CustomerViewModel GetCustomerById(int id);
+        CustomerViewModel AddNewCustomer(CustomerViewModel customerViewModel);
     }
 }

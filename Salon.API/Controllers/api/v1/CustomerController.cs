@@ -32,5 +32,22 @@ namespace Salon.API.Controllers.api.v1
                 return Ok(customer);
             return BadRequest();
         }
+        [HttpPost]
+        public ActionResult<CustomerViewModel> Post(CustomerViewModel customerViewModel)
+        {
+            if (customerViewModel == null)
+            {
+                return BadRequest();
+            }
+            try
+            {
+                var customer = _customerService.AddNewCustomer(customerViewModel);
+                return Ok(customer);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex);
+            }
+        }
     }
 }

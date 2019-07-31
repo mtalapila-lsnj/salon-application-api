@@ -25,5 +25,9 @@ namespace Salon.Service
                 return customer;
             return null;
         }
+        public CustomerViewModel AddNewCustomer(CustomerViewModel customerViewModel)
+        {
+            return _customerRepository.AddNewCustomer(customerViewModel);
+        }
     }
 }
