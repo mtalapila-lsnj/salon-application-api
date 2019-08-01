@@ -19,11 +19,12 @@ namespace Salon.Data.Repositories
             return _context.Set<Customer>()
                         .Include(x => x.GiftCards)
                         .Include(x => x.Appointments)
+                        .Where(x => x.IsDeleted == false)
                         .Select(x => MapFrom(x));
         }
         public CustomerViewModel GetCustomerById(int id)
         {
-            var customerEntity = _context.Set<Customer>().Where(x => x.Id == id).FirstOrDefault();
+            var customerEntity = _context.Set<Customer>().Where(x => x.Id == id && x.IsDeleted == false).FirstOrDefault();
             if (customerEntity != null)
             {
                 return MapFrom(customerEntity);
@@ -37,6 +38,23 @@ namespace Salon.Data.Repositories
             _context.SaveChanges();
 
             return MapFrom(entity);
+        }
+        public CustomerViewModel UpdateCustomer(CustomerViewModel customer)
+        {
+            if (customer.Id <= 0)
+                return null;
+            _context.Entry(MapTo(customer)).State = EntityState.Modified;
+            _context.SaveChanges();
+            return customer;
+        }
+        public CustomerViewModel DeleteCustomer(CustomerViewModel customer)
+        {
+            if (customer.Id <= 0)
+                return null;
+            customer.IsDeleted = true;
+            _context.Entry(MapTo(customer)).State = EntityState.Modified;
+            _context.SaveChanges();
+            return customer;
         }
     }
 }

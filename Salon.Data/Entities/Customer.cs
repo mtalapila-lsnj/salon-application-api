@@ -19,6 +19,7 @@ namespace Salon.Data.Entities
         public string PrimaryPhoneNumber { get; set; }
         public string SecondaryPhoneNumber { get; set; }
         public string Notes { get; set; }
+        public bool? IsDeleted { get; set; }
         [ForeignKey("GenderId")]
         public virtual Gender Gender { get; set; }
         public virtual ICollection<Appointment> Appointments { get; set; }

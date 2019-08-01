@@ -29,5 +29,13 @@ namespace Salon.Service
         {
             return _customerRepository.AddNewCustomer(customerViewModel);
         }
+        public CustomerViewModel UpdateCustomer(CustomerViewModel customer)
+        {
+            return _customerRepository.UpdateCustomer(customer);
+        }
+        public CustomerViewModel DeleteCustomer(CustomerViewModel customer)
+        {
+            return _customerRepository.DeleteCustomer(customer);
+        }
     }
 }

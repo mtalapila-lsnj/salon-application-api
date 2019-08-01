@@ -49,5 +49,37 @@ namespace Salon.API.Controllers.api.v1
                 return BadRequest(ex);
             }
         }
+        [HttpPut]
+        public ActionResult<CustomerViewModel> Put(CustomerViewModel customer)
+        {
+            if (customer == null)
+            {
+                return BadRequest();
+            }
+            try
+            {
+                var cust = _customerService.UpdateCustomer(customer);
+                return Ok(cust);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex);
+            }
+        }
+        [HttpDelete]
+        public ActionResult<CustomerViewModel> Delete(CustomerViewModel customer)
+        {
+            if (customer == null)
+                return BadRequest();
+            try
+            {
+                var cust = _customerService.DeleteCustomer(customer);
+                return Ok(cust);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex);
+            }
+        }
     }
 }

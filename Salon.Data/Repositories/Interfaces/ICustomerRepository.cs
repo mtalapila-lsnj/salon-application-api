@@ -10,5 +10,7 @@ namespace Salon.Data.Repositories.Interfaces
         IEnumerable<CustomerViewModel> GetCustomers();
         CustomerViewModel GetCustomerById(int id);
         CustomerViewModel AddNewCustomer(CustomerViewModel customerViewModel);
+        CustomerViewModel UpdateCustomer(CustomerViewModel customer);
+        CustomerViewModel DeleteCustomer(CustomerViewModel customer);
     }
 }

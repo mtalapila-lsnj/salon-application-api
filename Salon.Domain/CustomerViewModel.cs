@@ -17,6 +17,7 @@ namespace Salon.Domain
         public string PrimaryPhoneNumber { get; set; }
         public string SecondaryPhoneNumber { get; set; }
         public string Notes { get; set; }
+        public bool? IsDeleted { get; set; }
         public ICollection<ContactAcceptanceViewModel> ContactAcceptances { get; set; }
         public ICollection<ProductPreferenceViewModel> ProductPreferences { get; set; }
         public ICollection<ServicePreferenceViewModel> ServicePreferences { get; set; }
