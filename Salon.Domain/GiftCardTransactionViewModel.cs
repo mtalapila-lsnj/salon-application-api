@@ -11,5 +11,6 @@ namespace Salon.Domain
         public DateTime? TransactionDate { get; set; }
         public string TransactionNote { get; set; }
         public decimal AmountUsed { get; set; }
+        public GiftCardViewModel GiftCard { get; set; }
     }
 }

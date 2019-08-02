@@ -9,7 +9,7 @@ using Salon.Service.Interfaces;
 
 namespace Salon.API.Controllers.api.v1
 {
-    [Route("api/[controller]")]
+    [Route("api/v1/[controller]")]
     [ApiController]
     public class CustomerController : ControllerBase
     {
