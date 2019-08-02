@@ -1,6 +1,7 @@
 ﻿using Salon.Data.Base;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
@@ -13,15 +14,16 @@ namespace Salon.Data.Entities
         public int? CustomerId { get; set; }
         public int? EmployeeId { get; set; }
         public int? ServiceId { get; set; }
-        public DateTime Start { get; set; }
-        public int Duration { get; set; }
+        public DateTimeOffset Start { get; set; }
+        public TimeSpan? Duration { get; set; }
         public bool IsPaid { get; set; }
         public string Confirmation { get; set; }
         public bool? IsPrimaryRequest { get; set; }
         public bool? IsSecondaryRequest { get; set; }
         public string Remarks { get; set; }
         public int? VisitId { get; set; }
-        public int? GroupPartyId { get; set; }
+        public int? GroupPartyId { get; set; }        
+        public bool IsDeleted { get; set; }
 
 
         [ForeignKey("CustomerId")]

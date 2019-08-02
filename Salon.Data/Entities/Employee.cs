@@ -12,8 +12,10 @@ namespace Salon.Data.Entities
         public DateTime? DateOfBirth { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public string LastInitial { get; set; }
         public int? GenderId { get; set; }
+        [ForeignKey("GenderId")]
+        public virtual Gender Gender { get; set; }
+        public string LastInitial { get; set; }       
         
         public DateTime? HireDate { get; set; }
         public bool? IsActive { get; set; }
@@ -23,8 +25,6 @@ namespace Salon.Data.Entities
         public string ImageSource { get; set; }
         public string Remarks { get; set; }
         public int? TitleId { get; set; }
-        [ForeignKey("GenderId")]
-        public virtual Gender Gender { get; set; }
         [ForeignKey("TitleId")]
         public virtual EmployeeTitle CurrentTitle { get; set; }
         public virtual ICollection<Qualification> EmployeeQualifications { get; set; }

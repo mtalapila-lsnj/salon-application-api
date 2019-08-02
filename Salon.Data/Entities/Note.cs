@@ -10,11 +10,11 @@ namespace Salon.Data.Entities
     {
         public int Id { get; set; }
         public string NoteDescription { get; set; }
-        public DateTime? CreatedOn { get; set; }
+        public DateTimeOffset? CreatedOn { get; set; }
         public int? CreatedBy { get; set; }
         public bool? Active { get; set; }
         public bool? Completed { get; set; }
-        public DateTime? CompletedOn { get; set; }
+        public DateTimeOffset? CompletedOn { get; set; }
 
         [ForeignKey("CreatedBy")]
         public virtual Employee CreatedByEmployee { get; set; }

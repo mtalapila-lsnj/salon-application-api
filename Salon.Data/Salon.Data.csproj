@@ -9,6 +9,18 @@
     <Compile Remove="Migrations\20190712024616_AddedForeignKeyToAppointmentDetailss.Designer.cs" />
     <Compile Remove="Migrations\20190712025134_AddedForeignKeyToAppointment.cs" />
     <Compile Remove="Migrations\20190712025134_AddedForeignKeyToAppointment.Designer.cs" />
+    <Compile Remove="Migrations\20190802213620_ChangedAppointmentDateTimeDataType.cs" />
+    <Compile Remove="Migrations\20190802213620_ChangedAppointmentDateTimeDataType.Designer.cs" />
+    <Compile Remove="Migrations\20190802213756_ChangedAppointmentDateTimeDataTypes.cs" />
+    <Compile Remove="Migrations\20190802213756_ChangedAppointmentDateTimeDataTypes.Designer.cs" />
+    <Compile Remove="Migrations\20190802214042_AddedDurationToAppointment.cs" />
+    <Compile Remove="Migrations\20190802214042_AddedDurationToAppointment.Designer.cs" />
+    <Compile Remove="Migrations\20190802214508_ChangeAppointmentDetailsDataType.cs" />
+    <Compile Remove="Migrations\20190802214508_ChangeAppointmentDetailsDataType.Designer.cs" />
+    <Compile Remove="Migrations\20190802215720_AddedDurationToAppointmentDetail.cs" />
+    <Compile Remove="Migrations\20190802215720_AddedDurationToAppointmentDetail.Designer.cs" />
+    <Compile Remove="Migrations\20190802220238_ChangedEmployeeShiftDurationDataType.cs" />
+    <Compile Remove="Migrations\20190802220238_ChangedEmployeeShiftDurationDataType.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

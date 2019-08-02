@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Salon.Data;
 
 namespace Salon.Data.Migrations
 {
     [DbContext(typeof(SalonContext))]
-    partial class SalonContextModelSnapshot : ModelSnapshot
+    [Migration("20190802215517_ChangedDateTimeToDateTimeOffset")]
+    partial class ChangedDateTimeToDateTimeOffset
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -76,11 +78,7 @@ namespace Salon.Data.Migrations
 
                     b.Property<int?>("AppointmentId");
 
-                    b.Property<TimeSpan?>("Duration");
-
                     b.Property<int?>("EmployeeId");
-
-                    b.Property<bool>("IsDeleted");
 
                     b.Property<int?>("ServiceStepId");
 
@@ -349,7 +347,7 @@ namespace Salon.Data.Migrations
 
                     b.Property<bool?>("Deleted");
 
-                    b.Property<TimeSpan?>("Duration");
+                    b.Property<int?>("Duration");
 
                     b.Property<int?>("EmployeeId");
 
@@ -361,7 +359,7 @@ namespace Salon.Data.Migrations
 
                     b.HasIndex("EmployeeId");
 
-                    b.ToTable("EmployeeShifts");
+                    b.ToTable("EmployeeShift");
                 });
 
             modelBuilder.Entity("Salon.Data.Entities.EmployeeTitle", b =>

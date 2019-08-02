@@ -10,11 +10,12 @@ namespace Salon.Data.Entities
     {
         public int Id { get; set; }
         public int? AppointmentId { get; set; }
-        public DateTime? Start { get; set; }
-        public int? Duration { get; set; }
-        
+        public DateTimeOffset? Start { get; set; }
+        public TimeSpan? Duration { get; set; }
+        public bool IsDeleted { get; set; }
         public int? ServiceStepId { get; set; }
         public int? EmployeeId { get; set; }
+
         [ForeignKey("EmployeeId")]
         public virtual  Employee Employee { get; set; }
         [ForeignKey("ServiceStepId")]

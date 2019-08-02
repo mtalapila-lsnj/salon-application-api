@@ -19,6 +19,7 @@ namespace Salon.Data
         public virtual DbSet<Employee> Employees { get; set; }
         public virtual DbSet<EmployeeSchedule> EmployeeSchedules { get; set; }
         public virtual DbSet<EmployeeTitle> EmployeeTitles { get; set; }
+        public virtual DbSet<EmployeeShift> EmployeeShifts { get; set; }
         public virtual DbSet<Gender> Genders { get; set; }
         public virtual DbSet<GiftCard> GiftCards { get; set; }
         public virtual DbSet<GiftCardTransaction> GiftCardTransactions { get; set; }

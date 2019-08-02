@@ -9,8 +9,8 @@ namespace Salon.Data.Entities
     public class GiftCard: AbstractDataEntity
     {
         public int Id { get; set; }
-        public DateTime? DateSold { get; set; }
-        public DateTime? DateExpired { get; set; }
+        public DateTimeOffset? DateSold { get; set; }
+        public DateTimeOffset? DateExpired { get; set; }
         public decimal Amount { get; set; }
         public int? CustomerId { get; set; }
         public string To { get; set; }

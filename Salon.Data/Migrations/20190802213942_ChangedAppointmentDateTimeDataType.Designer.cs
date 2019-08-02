@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Salon.Data;
 
 namespace Salon.Data.Migrations
 {
     [DbContext(typeof(SalonContext))]
-    partial class SalonContextModelSnapshot : ModelSnapshot
+    [Migration("20190802213942_ChangedAppointmentDateTimeDataType")]
+    partial class ChangedAppointmentDateTimeDataType
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -29,13 +31,9 @@ namespace Salon.Data.Migrations
 
                     b.Property<int?>("CustomerId");
 
-                    b.Property<TimeSpan?>("Duration");
-
                     b.Property<int?>("EmployeeId");
 
                     b.Property<int?>("GroupPartyId");
-
-                    b.Property<bool>("IsDeleted");
 
                     b.Property<bool>("IsPaid");
 
@@ -76,15 +74,13 @@ namespace Salon.Data.Migrations
 
                     b.Property<int?>("AppointmentId");
 
-                    b.Property<TimeSpan?>("Duration");
+                    b.Property<int?>("Duration");
 
                     b.Property<int?>("EmployeeId");
 
-                    b.Property<bool>("IsDeleted");
-
                     b.Property<int?>("ServiceStepId");
 
-                    b.Property<DateTimeOffset?>("Start");
+                    b.Property<DateTime?>("Start");
 
                     b.HasKey("Id");
 
@@ -126,7 +122,7 @@ namespace Salon.Data.Migrations
 
                     b.Property<int>("AppointmentId");
 
-                    b.Property<DateTimeOffset?>("TransactionDate");
+                    b.Property<DateTime?>("TransactionDate");
 
                     b.Property<string>("TransactionNote");
 
@@ -143,11 +139,11 @@ namespace Salon.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTimeOffset?>("AcceptedOn");
+                    b.Property<DateTime?>("AcceptedOn");
 
                     b.Property<int?>("CustomerId");
 
-                    b.Property<DateTimeOffset?>("DeletedOn");
+                    b.Property<DateTime?>("DeletedOn");
 
                     b.Property<bool?>("IsDeleted");
 
@@ -345,23 +341,23 @@ namespace Salon.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTimeOffset?>("CreatedDate");
+                    b.Property<DateTime?>("CreatedDate");
 
                     b.Property<bool?>("Deleted");
 
-                    b.Property<TimeSpan?>("Duration");
+                    b.Property<int?>("Duration");
 
                     b.Property<int?>("EmployeeId");
 
-                    b.Property<DateTimeOffset?>("ModifiedDate");
+                    b.Property<DateTime?>("ModifiedDate");
 
-                    b.Property<DateTimeOffset?>("Start");
+                    b.Property<DateTime?>("Start");
 
                     b.HasKey("Id");
 
                     b.HasIndex("EmployeeId");
 
-                    b.ToTable("EmployeeShifts");
+                    b.ToTable("EmployeeShift");
                 });
 
             modelBuilder.Entity("Salon.Data.Entities.EmployeeTitle", b =>
@@ -400,9 +396,9 @@ namespace Salon.Data.Migrations
 
                     b.Property<int?>("CustomerId");
 
-                    b.Property<DateTimeOffset?>("DateExpired");
+                    b.Property<DateTime?>("DateExpired");
 
-                    b.Property<DateTimeOffset?>("DateSold");
+                    b.Property<DateTime?>("DateSold");
 
                     b.Property<string>("From");
 
@@ -429,7 +425,7 @@ namespace Salon.Data.Migrations
 
                     b.Property<int>("GiftCardId");
 
-                    b.Property<DateTimeOffset?>("TransactionDate");
+                    b.Property<DateTime?>("TransactionDate");
 
                     b.Property<string>("TransactionNote");
 
@@ -452,7 +448,7 @@ namespace Salon.Data.Migrations
 
                     b.Property<int?>("ParticipantsQuantity");
 
-                    b.Property<DateTimeOffset?>("Start");
+                    b.Property<DateTime>("Start");
 
                     b.HasKey("Id");
 
@@ -469,11 +465,11 @@ namespace Salon.Data.Migrations
 
                     b.Property<bool?>("Completed");
 
-                    b.Property<DateTimeOffset?>("CompletedOn");
+                    b.Property<DateTime?>("CompletedOn");
 
                     b.Property<int?>("CreatedBy");
 
-                    b.Property<DateTimeOffset?>("CreatedOn");
+                    b.Property<DateTime?>("CreatedOn");
 
                     b.Property<string>("NoteDescription");
 
@@ -482,6 +478,27 @@ namespace Salon.Data.Migrations
                     b.HasIndex("CreatedBy");
 
                     b.ToTable("Notes");
+                });
+
+            modelBuilder.Entity("Salon.Data.Entities.Person", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime?>("DateOfBirth");
+
+                    b.Property<string>("FirstName");
+
+                    b.Property<int?>("GenderId");
+
+                    b.Property<string>("LastName");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("GenderId");
+
+                    b.ToTable("Person");
                 });
 
             modelBuilder.Entity("Salon.Data.Entities.Product", b =>
@@ -528,7 +545,7 @@ namespace Salon.Data.Migrations
 
                     b.Property<int?>("Duration");
 
-                    b.Property<DateTimeOffset?>("Start");
+                    b.Property<DateTime?>("Start");
 
                     b.HasKey("Id");
 
@@ -598,7 +615,7 @@ namespace Salon.Data.Migrations
 
                     b.Property<int?>("Duration");
 
-                    b.Property<DateTimeOffset?>("Start");
+                    b.Property<DateTime?>("Start");
 
                     b.HasKey("Id");
 
@@ -613,7 +630,7 @@ namespace Salon.Data.Migrations
 
                     b.Property<string>("Name");
 
-                    b.Property<DateTimeOffset?>("Start");
+                    b.Property<DateTime?>("Start");
 
                     b.HasKey("Id");
 
@@ -777,6 +794,13 @@ namespace Salon.Data.Migrations
                     b.HasOne("Salon.Data.Entities.Employee", "CreatedByEmployee")
                         .WithMany("Notes")
                         .HasForeignKey("CreatedBy");
+                });
+
+            modelBuilder.Entity("Salon.Data.Entities.Person", b =>
+                {
+                    b.HasOne("Salon.Data.Entities.Gender", "Gender")
+                        .WithMany("People")
+                        .HasForeignKey("GenderId");
                 });
 
             modelBuilder.Entity("Salon.Data.Entities.Qualification", b =>

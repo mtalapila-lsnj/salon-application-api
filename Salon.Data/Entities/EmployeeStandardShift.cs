@@ -17,8 +17,8 @@ namespace Salon.Data.Entities
         public int? StartMinute { get; set; }
         public int? EndHour { get; set; }
         public int? EndMinute { get; set; }
-        public DateTime? CreatedOn { get; set; }
-        public DateTime? ModifiedOn { get; set; }
+        public DateTimeOffset? CreatedOn { get; set; }
+        public DateTimeOffset? ModifiedOn { get; set; }
         [ForeignKey("EmployeeId")]
         public virtual Employee Employee { get; set; }
     }
