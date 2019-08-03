@@ -34,14 +34,29 @@ namespace Salon.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<SalonContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("SalonContext"), sqlServerOptionsAction => sqlServerOptionsAction.EnableRetryOnFailure()));
+                options.UseSqlServer(Configuration.GetConnectionString("SalonContext"), sqlServerOptionsAction => sqlServerOptionsAction.EnableRetryOnFailure())
+                        .UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking));
             services.AddScoped<IEmployeeRepository, EmployeeRepository>();
             services.AddScoped<IGiftCardRepository, GiftCardRepository>();
             services.AddScoped<ICustomerRepository, CustomerRepository>();
+            services.AddScoped<IGiftCardTransactionRepository, GiftCardTransactionRepository>();
 
+            // services.AddScoped<IEmployeeService, EmployeeService>();
             services.AddScoped<IGiftCardService, GiftCardService>();
             services.AddScoped<ICustomerService, CustomerService>();
+            services.AddScoped<IGiftCardTransactionService, GiftCardTransactionService>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddCors(options =>
+            {
+                var config = Configuration.GetSection("Cors").GetChildren();
+                var urls = config.FirstOrDefault(item => item.Key == "GiftCardUX").GetChildren().Select(child => child.Value).ToArray();
+                options.AddPolicy("GiftCardPolicy", builder =>
+                {
+                    builder.WithOrigins(urls)
+                            .AllowAnyHeader()
+                            .AllowAnyMethod();
+                });
+            });
             services.AddAutoMapper();
         }
 
@@ -57,6 +72,7 @@ namespace Salon.API
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+            app.UseCors("GiftCardPolicy");
             app.UseHttpsRedirection();
             app.UseMvc();
         }

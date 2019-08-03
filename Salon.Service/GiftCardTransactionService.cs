@@ -10,12 +10,19 @@ namespace Salon.Service
     public class GiftCardTransactionService : IGiftCardTransactionService
     {
         private readonly IGiftCardTransactionRepository _giftCardTransactionRepository;
-        public GiftCardTransactionService(IGiftCardTransactionRepository giftCardTransactionRepository)
+        private readonly IGiftCardRepository _giftCardRepository;
+        public GiftCardTransactionService(IGiftCardTransactionRepository giftCardTransactionRepository, IGiftCardRepository giftCardRepository)
         {
             _giftCardTransactionRepository = giftCardTransactionRepository;
+            _giftCardRepository = giftCardRepository;
         }
         public GiftCardTransactionViewModel CreateTransactionForGiftCard(GiftCardTransactionViewModel transaction)
         {
+            var giftCard = _giftCardRepository.GetGiftCardById(transaction.GiftCardId);
+            if (giftCard.Amount < transaction.AmountUsed)
+                return null;
+            giftCard.Amount = giftCard.Amount - transaction.AmountUsed;
+            _giftCardRepository.UpdateGiftCard(transaction.GiftCardId, giftCard);
             return _giftCardTransactionRepository.CreateTransactionForGiftCard(transaction);
         }
 

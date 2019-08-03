@@ -8,8 +8,8 @@ namespace Salon.Domain
     public class GiftCardViewModel: AbstractDomainEntity
     {
         public int Id { get; set; }
-        public DateTime? DateSold { get; set; }
-        public DateTime? DateExpire { get; set; }
+        public DateTimeOffset? DateSold { get; set; }
+        public DateTimeOffset? DateExpire { get; set; }
         public decimal Amount { get; set; }
         public CustomerViewModel Customer { get; set; }
         public string To { get; set; }

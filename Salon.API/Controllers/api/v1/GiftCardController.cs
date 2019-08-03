@@ -25,7 +25,7 @@ namespace Salon.API.Controllers.api.v1
             return Ok(giftCards);
         }
         [HttpGet("{id}")]
-        public ActionResult Get(int id)
+        public ActionResult<GiftCardViewModel> Get(int id)
         {
             var giftCard = _giftCardService.GetGiftCard(id);
             return Ok(giftCard);

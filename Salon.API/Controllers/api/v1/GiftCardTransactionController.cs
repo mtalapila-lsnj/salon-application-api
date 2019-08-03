@@ -10,7 +10,7 @@ using Salon.Service.Interfaces;
 
 namespace Salon.API.Controllers.api.v1
 {
-    [Route("api/[controller]")]
+    [Route("api/v1/[controller]")]
     [ApiController]
     public class GiftCardTransactionController : ControllerBase
     {
@@ -35,18 +35,11 @@ namespace Salon.API.Controllers.api.v1
         public ActionResult<IEnumerable<GiftCardTransactionViewModel>> GetTransactionsByGiftCardId(int id)
         {
             var transactions = _giftCardTransactionService.GetTransactionsByGiftCardId(id);
-            if (transactions.Count() <= 0)
-                return NotFound();
             return Ok(transactions);
         }
         [HttpPost]
-        [Route("addtransaction")]
         public ActionResult<GiftCardTransaction> AddTransactionForGiftCard(GiftCardTransactionViewModel transaction)
         {
-            if (transaction.GiftCard == null)
-            {
-                return BadRequest();
-            }
             var trans = _giftCardTransactionService.CreateTransactionForGiftCard(transaction);
             return Ok(trans);
         }
