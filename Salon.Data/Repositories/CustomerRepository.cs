@@ -20,11 +20,12 @@ namespace Salon.Data.Repositories
                         .Include(x => x.GiftCards)
                         .Include(x => x.Appointments)
                         .Where(x => x.IsDeleted == false)
+                        .OrderBy(x => x.FirstName)
                         .Select(x => MapFrom(x));
         }
         public CustomerViewModel GetCustomerById(int id)
         {
-            var customerEntity = _context.Set<Customer>().Where(x => x.Id == id && x.IsDeleted == false).FirstOrDefault();
+            var customerEntity = _context.Set<Customer>().Include(x => x.Gender).Where(x => x.Id == id && x.IsDeleted == false).FirstOrDefault();
             if (customerEntity != null)
             {
                 return MapFrom(customerEntity);

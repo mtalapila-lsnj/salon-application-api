@@ -3,6 +3,7 @@ using Salon.Domain;
 using Salon.Service.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Salon.Service
 {
@@ -16,7 +17,7 @@ namespace Salon.Service
 
         public IEnumerable<GiftCardViewModel> GetGiftCards()
         {
-            var gc = _giftCardRepository.GetAllGiftCards();
+            var gc = _giftCardRepository.GetAllGiftCards().OrderByDescending(x => x.Id);
             return gc;
         }
 
