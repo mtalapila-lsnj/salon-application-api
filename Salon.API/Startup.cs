@@ -49,7 +49,7 @@ namespace Salon.API
             services.AddCors(options =>
             {
                 var config = Configuration.GetSection("Cors").GetChildren();
-                var urls = config.FirstOrDefault(item => item.Key == "GiftCardUX").GetChildren().Select(child => child.Value).ToArray();
+                var urls = config.FirstOrDefault(item => item.Key == "SalonUX").GetChildren().Select(child => child.Value).ToArray();
                 options.AddPolicy("GiftCardPolicy", builder =>
                 {
                     builder.WithOrigins(urls)
